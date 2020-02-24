@@ -1,11 +1,11 @@
-{% set notFirst = 0 %}
+{% set first = true %}
 [
 {% for sentence in summary %}
-"{{ sentence }}"
-{% if notFirst %}
-, 
-{% else %}
-{% set notFirst = 1 %}
-{% endif %}
+  "{{ sentence }}"
+  {% if not first %}
+    , 
+  {% else %}
+    {% set first = false %}
+  {% endif %}
 {% endfor %}
 ]
