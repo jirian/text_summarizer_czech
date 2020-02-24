@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from flask import Flask, request, render_template
+from flask import Flask, request, render_template, jsonify
 
 import summarizer_machovec_modified
 
@@ -17,7 +17,7 @@ def index():
         print('Summarizing...')
         summary = summarizer_machovec_modified.summarize(text)
     print(f'\n======summary======\n{summary}')
-    return render_template('index.html', text=text, summary=summary)
+    return jsonify(summary)
 
 
 if __name__ == '__main__':
